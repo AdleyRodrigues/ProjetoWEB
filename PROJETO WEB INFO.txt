@@ -1,0 +1,15 @@
+Nome da equipe: Coffee Programmers
+
+Membros da equipe: Adley Rodrigues de Castro, Matheus Barbosa Macedo, Ericles Ferreira da Silva Carvalho e Maria Eduarda Lima Saraiva
+
+Nome do Projeto: Programa de Controle de Gastos Pessoais
+
+Descrição do Projeto: O controle de gastos é uma atividade importante para o controle financeiro de uma pessoa, família
+ou empresa, sendo importante para ajudar na educação financeira. Programas que armazenam as
+informações de receitas e gastos são importantes para facilitar o gerenciamento financeiro, auxiliando
+uma tarefa que para muitos é tediosa e complicada, dificultando ou mesmo impossibilitando o controle
+de gastos. Com as informações precisas dos gastos é muito fácil para o usuário encontrar as principais
+despesas, e assim equilibrar melhor suas finanças.
+A ideia da nossa equipe é desenvolver um programa de controle financeiro, onde o usuário informará suas receitas e
+despesas organizando-as objetivando melhorar suas finanças, e permitindo uma maior economia no
+final do mês.
