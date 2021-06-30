@@ -11,24 +11,13 @@
 <body>
     <div class="container">
         <form>
-            <h1 class="mt-5 text-center">Cadastrar Despesa</h1>
-            <div class="alert alert-success text-center" role="alert"></div>
-
-            <input type="hidden" name="id" id="id">
-
-            <div class="mb-3">
-                <label for="despesa" class="form-label">Valor da Despesa</label>
-                <input type="text" name="despesa" id="despesa" class="form-control" autofocus>
-            </div>
-
-            <div class="mb-3">
-                <label for="data" class="form-label">Data</label>
-                <input type="date" name="data" id="data" class="form-control">
-            </div>
-
             <div class="mb-3">
                 <label for="descricao" class="form-label">Descrição</label>
                 <input type="text" name="descricao" id="descricao" class="form-control">
+            </div>
+            <div class="mb-3">
+                <label for="despesa" class="form-label">Valor da Despesa</label>
+                <input type="text" name="despesa" id="despesa" class="form-control" autofocus>
             </div>
 
             <div class="mb-3">
@@ -42,7 +31,7 @@
                 </select>
             </div>
 
-            <div class="mb-3" >
+            <div class="mb-3">
                 <label for="pagamento" class="form-label">Forma de Pagamento</label>
                 <select name="pagamento" id="pagamento" class="form-control">
                     <option value="0" selected></option>
@@ -61,7 +50,10 @@
                     <option value="3">3x</option>>
                 </select>
             </div>
-
+            <div class="mb-3">
+                <label for="data" class="form-label">Data</label>
+                <input type="date" name="data" id="data" class="form-control">
+            </div>
             <div class="form-check mb-3">
                 <input class="form-check-input" type="checkbox" id="pago" name="pago">
                 <label class="form-check-label" for="pago">
