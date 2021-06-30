@@ -37,7 +37,7 @@ body{
     width: 280px;
     border-color: #2ecc71;
   }
-  .box input[type = "submit"]{
+  .box input[type = "button"]{
     border:0;
     background: none;
     display: block;
