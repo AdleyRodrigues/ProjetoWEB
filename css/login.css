@@ -38,6 +38,7 @@ body{
   border-color: #dee0df;
 }
 .box input[type = "button"]{
+
   border:0;
   background: none;
   display: block;
