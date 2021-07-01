@@ -1,6 +1,26 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html, body {
+    height: 100%;
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    overflow: hidden;
+    background: #59069cc7;
+}
 .container{
     width: 60%;
-    margin-top: 100px;
+    margin-top: 10px;
+    width: 700px;
+    padding: 40px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    background: #dee0df;
+    text-align: center;
 }
 
 .form{
