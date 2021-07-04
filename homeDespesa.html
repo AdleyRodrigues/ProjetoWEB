@@ -30,7 +30,8 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>                 <!-- Daqui -->>
+                
+                <tr>                 <!-- Daqui -->
                     <td>internet</td>
                     <td>R$ 70,00</td>
                     <td>Casa</td>
@@ -38,22 +39,7 @@
                     <td>23/04/2021</td>
                     <td>pago</td>
                 </tr>
-                <tr>
-                    <td>Trocar Oleo </td>
-                    <td>R$ 50,00</td>
-                    <td>Carro</td>
-                    <td>Dinheiro</td>
-                    <td>23/04/2021</td>
-                    <td> não pago</td>
-                </tr>
-                <tr>
-                    <td>Compra do mês</td>
-                    <td>R$ 250,00</td>
-                    <td>Alimentação</td>
-                    <td>Dinheiro</td>
-                    <td>23/04/2021</td>
-                    <td> pago</td> 
-                </tr>               <!-- ate aqui vai sumir -->> 
+                               <!-- ate aqui vai sumir -->
             </tbody>
         </table>
     </div>
@@ -76,10 +62,10 @@
                         <label for="categoria" class="form-label">Categoria</label>
                         <select name="categoria" id="categoria" class="form-control">
                             <option value="0" selected></option>
-                            <option value="1">Casa</option>
-                            <option value="2">Carro</option>
-                            <option value="3">Alimentação</option>
-                            <option value="3">Animais de Estimação</option>
+                            <option value="Casa">Casa</option>
+                            <option value="Carro">Carro</option>
+                            <option value="Alimentação">Alimentação</option>
+                            <option value="Animais de Estimação">Animais de Estimação</option>
                         </select>
                     </div>
 
@@ -87,9 +73,9 @@
                         <label for="pagamento" class="form-label">Forma de Pagamento</label>
                         <select name="pagamento" id="pagamento" class="form-control">
                             <option value="0" selected></option>
-                            <option value="1">Cartão de Crédito</option>
-                            <option value="2">Débito</option>
-                            <option value="3">Dinheiro</option>
+                            <option value="Cartão de Crédito">Cartão de Crédito</option>
+                            <option value="Débito">Débito</option>
+                            <option value="Dinheiro">Dinheiro</option>
                         </select>
                     </div>
 
@@ -105,7 +91,7 @@
                     </div>
 
                     <div class="d-grid gap-2">
-                        <button class="btn btn-primary" type="button" id="cadastrar">Cadastrar</button>
+                        <button class="btn btn-primary" onclick="inserir(); PopUps.close()" type="button" id="cadastrar">Cadastrar</button>
                         <button class="btn btn-secondary" type="reset">Limpar</button>
                         <a onclick="PopUps.close()" href="#" class="btn btn-tertiary">Cancelar</a>
                     </div>
