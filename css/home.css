@@ -11,6 +11,11 @@ html, body {
     overflow: hidden;
     
 }
+.pag{
+    margin-right: 60px;
+    margin-left: 75px;
+    margin-top: 10px;
+}
 
 ul {
     list-style-type: none;
@@ -19,6 +24,10 @@ ul {
     overflow: hidden;
     background-color: #fff;
     
+}
+.login{
+    margin-top: 16px;
+    margin-left: 150px;
 }
 
 li {
@@ -35,15 +44,16 @@ li a {
 }
 
 .logo{
-    margin-right: 48px;
-    margin-left: 50px;
+    margin-right: 200px;
+    margin-left: 100px;
+    margin-top: 20px;
+    max-width: 40px;
+    max-height: 40px;
 }
 
 li a:hover {
     color:#6056c9;
 }
-
-
 .conteudo {
     width: 90%;
     height: 70%;
