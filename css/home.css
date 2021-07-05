@@ -11,11 +11,7 @@ html, body {
     overflow: hidden;
     
 }
-.pag{
-    margin-right: 60px;
-    margin-left: 75px;
-    margin-top: 10px;
-}
+
 
 ul {
     list-style-type: none;
@@ -25,9 +21,12 @@ ul {
     background-color: #fff;
     
 }
+.home{
+    margin-top: 16px;
+}
 .login{
     margin-top: 16px;
-    margin-left: 150px;
+    margin-left: 100px;
 }
 
 li {
