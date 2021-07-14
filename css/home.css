@@ -53,6 +53,10 @@ li a {
 li a:hover {
     color:#6056c9;
 }
+
+li .home{
+    color: #6056c9;
+}
 .conteudo {
     width: 90%;
     height: 70%;
