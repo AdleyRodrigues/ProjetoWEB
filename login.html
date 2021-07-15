@@ -1,25 +1,54 @@
 <!DOCTYPE html>
-<html lang="pt-br" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title>Tela Login</title> 
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/login.css">
-  </head>
-  <body>
+    <script src="https://kit.fontawesome.com/2a9a8d26e9.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,400;0,700;1,100;1,400&display=swap"
+        rel="stylesheet">
 
-<form class="box" action="" method="post">
-  <h1>Login</h1> <hr><br>
-  Email: <input type="text" id="email" autofocus>
-  Senha: <input type="password" id="senha">
+    <title>Tela de Login</title>
+</head>
 
-  <input type="button" onclick="Logar()" id="login" value="Login">
-  <br/><br/>
+<body>
+    <div class="container">
+        <div class="content">
+            <div class="login">
+                <form class="form" action="" method="post">
+                    <h1>Faça seu login</h1> <br>
 
-  <a class="pag" href="cadastroConta.html">Não tem login? Cadastre-se aqui</a><br/><br>
-  <a class="home" href="home.html">Página Principal</a>
+                    <label class="label-input" for="">
+                        <i class="far fa-envelope icoon"></i>
+                        <input type="text" id="email" placeholder="Email" autofocus>
+                    </label>
 
-</form>
+                    <label class="label-input" for="">
+                        <i class="fas fa-lock icoon"></i>
+                        <input type="password" id="senha" placeholder="Senha">
+                    </label>
 
-<script src="js/login.js"></script>
-  </body>
+                    <button type="button" class="btnEntrar" onclick="Logar()" id="login"> Entrar </button>
+
+                    <br /><br />
+
+                    <a class="cadastroConta" href="cadastroConta.html">Não tem login? Cadastre-se aqui</a><br /><br>
+                    <a class="home" href="index.html">Página Principal</a>
+
+                </form>
+            </div>
+
+            <div class="imagem">
+                <img src="css/img/loginUser.png" alt="">
+            </div>
+        </div>
+    </div>
+
+    <script src="js/login.js"></script>
+</body>
+
 </html>
