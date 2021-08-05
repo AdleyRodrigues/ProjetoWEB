@@ -33,10 +33,9 @@
 
           <br /><br />
 
-          <a class="cadastroConta" href="cadastroConta.html"
-            >Não tem login? Cadastre-se aqui</a
-          ><br /><br />
-          <a class="home" href="index.html">Página Principal</a>
+          <router-link class="cadastroConta" to="/signup">Não tem login ? cadastre-se aqui</router-link>
+          <br /><br />
+          <router-link class="home" to="/"> Pagina Inicial</router-link>
         </form>
       </div>
 
@@ -87,6 +86,7 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
+  box-shadow:10px 10px 10px rgba(50, 50, 50, 0.1);
 }
 
 .form {

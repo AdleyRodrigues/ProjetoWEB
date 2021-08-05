@@ -12,13 +12,14 @@
               type="text"
               name="nome"
               placeholder="Nome Completo"
+              v-model="signup.nome"
               autofocus
             />
           </label>
 
           <label class="label-input" for="">
             <i class="far fa-envelope icoon"></i>
-            <input type="text" id="email" name="email" placeholder="Email" />
+            <input type="text" id="email" name="email" v-model="signup.email" placeholder="Email" />
           </label>
 
           <label class="label-input" for="">
@@ -27,6 +28,7 @@
               type="password"
               id="senha"
               name="senha"
+              v-model="signup.senha"
               placeholder="Senha"
             />
           </label>
@@ -37,6 +39,7 @@
               type="password"
               name="senha2"
               id="senha2"
+              v-model="signup.senha2"
               placeholder="Confirmar Senha"
             />
           </label>
@@ -45,7 +48,7 @@
             Criar Conta
           </button>
 
-          <a class="home" href="index.html">Página Principal</a>
+          <router-link class="home" to="/"> Pagina Inicial</router-link>
         </form>
       </div>
 
@@ -57,7 +60,24 @@
 </template>
 
 <script>
-export default {};
+export default {
+  name: "FormSignup",
+  data() {
+    return {
+      signup: {
+        nome:"",
+        email: "",
+        senha: "",
+        senha2: "",
+        baseURI: "http://localhost:3033/login",
+        
+      },
+     
+    };
+  },
+  methods: {
+  },
+};
 </script>
 
 <style scoped>
@@ -77,6 +97,7 @@ export default {};
   display: flex;
   justify-content: center;
   align-items: center;
+  box-shadow:10px 10px 10px rgba(50, 50, 50, 0.1);
 }
 
 .form {

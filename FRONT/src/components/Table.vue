@@ -7,7 +7,7 @@
     aria-labelledby="exampleModalLabel"
     aria-hidden="true"
   >
-  <div class="modal-dialog">
+    <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="exampleModalLabel">Inserir Despesas</h5>
@@ -27,6 +27,7 @@
                 name="descricao"
                 id="descricao"
                 class="form-control"
+                v-model="expense.descricao"
                 autofocus
               />
             </div>
@@ -36,13 +37,14 @@
                 type="number"
                 name="despesa"
                 id="despesa"
+                v-model="expense.despesa"
                 class="form-control"
               />
             </div>
 
             <div class="mb-3">
               <label for="categoria" class="form-label">Categoria</label>
-              <select name="categoria" id="categoria" class="form-control">
+              <select name="categoria" id="categoria" v-model="expense.categoria" class="form-control">
                 <option value="0" selected></option>
                 <option value="Casa">Casa</option>
                 <option value="Carro">Carro</option>
@@ -57,7 +59,7 @@
               <label for="pagamento" class="form-label"
                 >Forma de Pagamento</label
               >
-              <select name="pagamento" id="pagamento" class="form-control">
+              <select name="pagamento" id="pagamento" v-model="expense.pagamento" class="form-control">
                 <option value="0" selected></option>
                 <option value="Cartão de Crédito">Cartão de Crédito</option>
                 <option value="Débito">Débito</option>
@@ -67,7 +69,7 @@
 
             <div class="mb-3">
               <label for="data" class="form-label">Data</label>
-              <input type="date" name="data" id="data" class="form-control" />
+              <input type="date" name="data" id="data" v-model="expense.data" class="form-control" />
             </div>
             <div class="form-check mb-3">
               <input
@@ -75,6 +77,7 @@
                 type="checkbox"
                 id="pago"
                 name="pago"
+                v-model="expense.pago"
               />
               <label class="form-check-label" for="pago"> Pago? </label>
             </div>
@@ -113,6 +116,8 @@
           <th scope="col">Forma de Pagamento</th>
           <th scope="col">Data</th>
           <th scope="col">Situação</th>
+          <th scope="col"></th>
+          <th scope="col"></th>
         </tr>
       </thead>
       <tbody>
@@ -125,6 +130,8 @@
           <td>Dinheiro</td>
           <td>23/04/2021</td>
           <td>pago</td>
+          <td><i class="fas fa-pen"></i></td>
+          <td><i class="fas fa-trash-alt"></i></td>
         </tr>
       </tbody>
     </table>
@@ -132,7 +139,26 @@
 </template>
 
 <script>
-export default {};
+export default {
+  name: "Table",
+  data() {
+    return {
+      expense: {
+        descricao:"",
+        despesa: "",
+        categoria: "",
+        pagamento: "",
+        data: "",
+        pago: "",
+        baseURI: "http://localhost:3033/login",
+        
+      },
+     
+    };
+  },
+  methods: {
+  }
+};
 </script>
 <style scoped>
 .tabela {
@@ -142,5 +168,4 @@ export default {};
   margin-left: 20%;
   text-align: center;
 }
-
 </style>
