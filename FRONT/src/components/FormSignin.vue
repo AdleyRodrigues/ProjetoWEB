@@ -1,0 +1,154 @@
+<template>
+  <div class="container">
+    <div class="content">
+      <div class="login">
+        <form v-on:submit.prevent="LoginUser()" class="form">
+          <h1>Faça seu login</h1>
+          <br />
+
+          <label class="label-input" for="">
+            <i class="far fa-envelope icoon"></i>
+            <input
+              type="text"
+              id="email"
+              name="email"
+              v-model="signin.email"
+              placeholder="Email"
+              autofocus
+            />
+          </label>
+
+          <label class="label-input" for="">
+            <i class="fas fa-lock icoon"></i>
+            <input
+              type="password"
+              id="senha"
+              name="senha"
+              v-model="signin.senha"
+              placeholder="Senha"
+            />
+          </label>
+
+          <button type="submit" class="btnEntrar" id="login">Entrar</button>
+
+          <br /><br />
+
+          <a class="cadastroConta" href="cadastroConta.html"
+            >Não tem login? Cadastre-se aqui</a
+          ><br /><br />
+          <a class="home" href="index.html">Página Principal</a>
+        </form>
+      </div>
+
+      <div class="imagem">
+        <img src="/img/loginUser.png" alt="" />
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+import axios from "axios";
+export default {
+  name: "FormSignin",
+  data() {
+    return {
+      signin: {
+        email: "",
+        senha: "",
+        baseURI: "http://localhost:3033/login",
+        
+      },
+     
+    };
+  },
+  methods: {
+  },
+};
+    //console.log(baseURI);
+
+</script>
+
+<style scoped>
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+
+  background-color: #f1f1f2;
+}
+.content {
+  background-color: #fff;
+  border-radius: 15px;
+  width: 80%;
+  height: 70%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+}
+
+input:focus {
+  box-shadow: 0 0 0 0;
+  border: 0 none;
+  outline: 0;
+}
+
+.form input {
+  height: 40px;
+  width: 100%;
+  border: none;
+  background-color: #e6e6e6;
+  border-radius: 25px;
+}
+
+.label-input {
+  background-color: #e6e6e6;
+  border-radius: 25px;
+  display: flex;
+  align-items: center;
+  margin: 5px;
+  padding: 0 8px;
+}
+
+.btnEntrar {
+  border: none;
+  border-radius: 25px;
+  color: #fff;
+  background-color: #ba68c8;
+  height: 40px;
+  padding: 0 8px;
+}
+
+.btnEntrar:hover {
+  cursor: pointer;
+  transition-duration: 0.5s;
+  background-color: #83498c;
+}
+
+.icoon {
+  color: #666666;
+  padding: 0 8px;
+}
+
+.imagem {
+  display: flex;
+  margin-left: 40px;
+}
+img {
+  height: 60vh;
+  width: 30vw;
+}
+
+.cadastroConta,
+.home {
+  text-decoration: none;
+  color: #666666;
+}
+</style>
