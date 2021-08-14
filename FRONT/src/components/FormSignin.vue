@@ -2,7 +2,7 @@
   <div class="container">
     <div class="content">
       <div class="login">
-        <form v-on:submit.prevent="LoginUser()" class="form">
+        <form @submit.prevent="logar" class="form">
           <h1>Faça seu login</h1>
           <br />
 
@@ -12,7 +12,7 @@
               type="text"
               id="email"
               name="email"
-              v-model="signin.email"
+              v-model="signin.usuario"
               placeholder="Email"
               autofocus
             />
@@ -47,21 +47,33 @@
 </template>
 
 <script>
-import axios from "axios";
+import api from "../services/api";
 export default {
   name: "FormSignin",
   data() {
     return {
       signin: {
-        email: "",
+        usuario: "",
         senha: "",
-        baseURI: "http://localhost:3033/login",
+
         
       },
      
     };
   },
   methods: {
+    logar(){
+      api.post('login', this.signin).then((Response) => {
+        //console.log(Response.data.email);
+
+        if(Response.data.success){
+          //console.log(Response);
+          window.location.href = "http://localhost:8080/expenses";
+        }else{
+          alert("login ou senha incorretos!");
+        }
+      })
+    }
   },
 };
     //console.log(baseURI);

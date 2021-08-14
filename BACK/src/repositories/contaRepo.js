@@ -24,6 +24,7 @@ exports.verificaConta = async (usuario,senha) => {
       else {
         return false;
       }
+   // return result.rows;
 }
 
 exports.findOne = async (id) => {//pesquisar pelo id

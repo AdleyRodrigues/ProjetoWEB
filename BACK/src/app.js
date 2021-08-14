@@ -2,10 +2,17 @@
 //imports
 const express = require("express");
 app = express();
+const bodyParser = require('body-parser');
+const cors = require('cors');
 
-//configs express
+app.use(bodyParser.urlencoded({
+  extended: true
+}));
+
+app.use(cors());
 app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+
+//app.use(express.urlencoded({ extended: true }));
 
 //rotas
 const index = require("./routes/index.js");

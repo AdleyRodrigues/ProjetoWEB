@@ -5,7 +5,6 @@
     </router-link>
     <router-link to="/">Inicio</router-link> 
     <router-link to="/signin">Entrar</router-link>
-    <router-link to="/expenses">Despesas</router-link>
     
   </div>
 </template>

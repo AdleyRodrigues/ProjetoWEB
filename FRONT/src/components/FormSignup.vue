@@ -76,6 +76,17 @@ export default {
     };
   },
   methods: {
+        cadastrar(){
+      api.post('', this.signin).then((Response) => {
+        //console.log(Response.data.email);
+
+        if(Response.data.success){
+          //console.log(Response);
+          window.location.href = "http://localhost:8080/expenses";
+        }
+      })
+    }
+
   },
 };
 </script>
