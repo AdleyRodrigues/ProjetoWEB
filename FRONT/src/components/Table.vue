@@ -23,7 +23,7 @@
           <td>Casa</td>
           <td>Dinheiro</td>
           <td>23/04/2021</td>
-          <td><i class="fas fa-pen"></i></td>
+          <td> <FormUpdate/> </td>
           <td><i class="fas fa-trash-alt"></i></td>
         </tr>
       </tbody>
@@ -32,8 +32,13 @@
 </template>
 
 <script>
+import FormUpdate from "../components/FormUpdate.vue"
+
 export default {
   name: "Table",
+  components:{
+    FormUpdate
+  },
   data() {
     return {};
   },
@@ -45,7 +50,7 @@ export default {
   position: absolute;
   width: 60%;
   height: 70%;
-  margin-top: 15%;
+  margin-top: 14%;
   margin-left: 20%;
   text-align: center;
 }
