@@ -138,8 +138,11 @@ export default {
 
 <style scoped >
 .btn.btnUpdate{
-    padding: 0;
-    
+    padding: 0;   
+}
+
+.modal-dialog{
+    text-align: left;
 }
 
 </style>
