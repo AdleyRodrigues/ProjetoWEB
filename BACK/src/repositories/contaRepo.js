@@ -24,11 +24,10 @@ exports.verificaConta = async (usuario,senha) => {
       else {
         return false;
       }
-   // return result.rows;
 }
 
-exports.findOne = async (id) => {//pesquisar pelo id
-    const result = await pool.query("SELECT * FROM conta WHERE id=$1;", [id]);
+exports.findOne = async (conta_id) => {//pesquisar pelo conta_id
+    const result = await pool.query("SELECT * FROM conta WHERE conta_id=$1;", [conta_id]);
     return result.rows[0];
   };
 
@@ -39,14 +38,17 @@ exports.findOne = async (id) => {//pesquisar pelo id
     return result.rows;
   };
 
-  exports.update = async (id, carro) => {//atualizar
+  exports.update = async (conta_id, conta) => {//atualizar
     const result = await pool.query(
-      "UPDATE conta SET nome=$1, usuario=$2, senha=$3 WHERE id=$3 RETURNING *;",
-      [conta.nome, conta.usuario, conta.senha, id]
+      "UPDATE conta SET nome=$1, usuario=$2, senha=$3 WHERE conta_id=$3 RETURNING *;",
+      [conta.nome, conta.usuario, conta.senha, conta_id]
     );
     return result.rows[0];
   };
 
-  exports.delete = async (id) => {//deletar
-    await pool.query("DELETE FROM conta WHERE id=$1;", [id]);
+  //fazer o metodo busca por quantidade
+  //fazer o metodo busca pelo nome da despesa
+
+  exports.delete = async (conta_id) => {//deletar
+    await pool.query("DELETE FROM conta WHERE conta_id=$1;", [conta_id]);
   };

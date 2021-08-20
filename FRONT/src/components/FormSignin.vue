@@ -33,7 +33,7 @@
 
           <br /><br />
 
-          <router-link class="cadastroConta" to="/signup">Não tem login ? cadastre-se aqui</router-link>
+          <router-link class="cadastroConta" to="/signup">Não tem login ? Cadastre-se aqui</router-link>
           <br /><br />
           <router-link class="home" to="/"> Pagina Inicial</router-link>
         </form>
@@ -61,7 +61,7 @@ export default {
      
     };
   },
-  methods: {
+  methods:{
     logar(){
       api.post('login', this.signin).then((Response) => {
         //console.log(Response.data.email);

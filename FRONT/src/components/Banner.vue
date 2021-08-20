@@ -11,7 +11,7 @@
       </p>
       
       <div class="cadastro">
-        <router-link to="/signup">Vamos Começar</router-link>
+        <router-link to="/signin">Vamos Começar</router-link>
         <router-view/>
     
       </div>

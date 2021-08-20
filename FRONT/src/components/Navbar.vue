@@ -4,7 +4,7 @@
         <img :src="logo" :alt="alt" id="logo">
     </router-link>
     <router-link to="/">Inicio</router-link> 
-    <router-link to="/signin">Entrar</router-link>
+    <router-link to="/signup">Cadastre-se</router-link>
     
   </div>
 </template>

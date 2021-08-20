@@ -36,6 +36,7 @@
                   name="descricao"
                   id="descricao"
                   class="form-control"
+                  v-model="signup.descricao"
                   autofocus
                 />
               </div>
@@ -46,12 +47,13 @@
                   name="despesa"
                   id="despesa"
                   class="form-control"
+                  v-model="signup.valor"
                 />
               </div>
 
               <div class="mb-3">
                 <label for="categoria" class="form-label">Categoria</label>
-                <select name="categoria" id="categoria" class="form-control">
+                <select name="categoria" id="categoria" class="form-control" v-model="signup.categoria">
                   <option value="0" selected></option>
                   <option value="Casa">Casa</option>
                   <option value="Carro">Carro</option>
@@ -66,7 +68,7 @@
                 <label for="pagamento" class="form-label"
                   >Forma de Pagamento</label
                 >
-                <select name="pagamento" id="pagamento" class="form-control">
+                <select name="pagamento" id="pagamento" class="form-control" v-model="signup.forma_pagamento">
                   <option value="0" selected></option>
                   <option value="Cartão de Crédito">Cartão de Crédito</option>
                   <option value="Débito">Débito</option>
@@ -76,17 +78,9 @@
 
               <div class="mb-3">
                 <label for="data" class="form-label">Data</label>
-                <input type="date" name="data" id="data" class="form-control" />
+                <input type="date" name="data" id="data" class="form-control" v-model="signup.data" />
               </div>
-              <div class="form-check mb-3">
-                <input
-                  class="form-check-input"
-                  type="checkbox"
-                  id="pago"
-                  name="pago"
-                />
-                <label class="form-check-label" for="pago"> Pago? </label>
-              </div>
+              
             </form>
           </div>
           <div class="modal-footer">
@@ -114,7 +108,32 @@
 </template>
 
 <script>
-export default {};
+import api from "../services/api"
+export default {
+  name: "FormExpenses",
+  data() {
+    return {
+      signup: {
+        descrição:"",
+        valor: "",
+        categoria: "",
+        forma_pagamento: "",
+         data: "",
+        
+      },
+     
+    };
+  },
+  methods: {
+      cadastrar(){
+      api.post('despesas', this.signup).then((Response) => {
+        console.log(Response.data);
+        alert("Despesa cadastrada com sucesso")
+      })
+    }
+
+  },
+};
 </script>
 
 <style scoped >

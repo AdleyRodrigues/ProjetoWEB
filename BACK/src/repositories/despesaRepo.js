@@ -2,8 +2,8 @@ const pool = require("../dbs/postgres");
 
 exports.save = async (despesa) => {//adicionar 
     const result = await pool.query(
-      "INSERT INTO despesa(nome, categoria, formaPagamento, data, valor) VALUES ($1,$2,$3,$4,$5) RETURNING *;",
-      [despesa.nome, despesa.categoria, despesa.formaPagamento, despesa.data, despesa.valor]
+      "INSERT INTO despesa(valor, despesa_data, descricao, categoria, forma_pagamento) VALUES ($1,$2,$3,$4,$5) RETURNING *;",
+      [ despesa.valor, despesa.data, despesa.descricao, despesa.categoria, despesa.forma_pagamento]
     );
     return result.rows[0];
   };

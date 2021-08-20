@@ -19,7 +19,7 @@
 
           <label class="label-input" for="">
             <i class="far fa-envelope icoon"></i>
-            <input type="text" id="email" name="email" v-model="signup.email" placeholder="Email" />
+            <input type="text" id="usuario" name="usuario" v-model="signup.usuario" placeholder="Email" />
           </label>
 
           <label class="label-input" for="">
@@ -44,7 +44,7 @@
             />
           </label>
 
-          <button type="button" class="btnCadastrar" id="login">
+          <button type="button" class="btnCadastrar" id="login" @click="cadastrar">
             Criar Conta
           </button>
 
@@ -60,30 +60,25 @@
 </template>
 
 <script>
+import api from "../services/api"
 export default {
   name: "FormSignup",
   data() {
     return {
       signup: {
         nome:"",
-        email: "",
+        usuario: "",
         senha: "",
-        senha2: "",
-        baseURI: "http://localhost:3033/login",
         
       },
      
     };
   },
   methods: {
-        cadastrar(){
-      api.post('', this.signin).then((Response) => {
-        //console.log(Response.data.email);
-
-        if(Response.data.success){
-          //console.log(Response);
-          window.location.href = "http://localhost:8080/expenses";
-        }
+      cadastrar(){
+      api.post('contas', this.signup).then((Response) => {
+        console.log(Response.data);
+        alert("Usuario cadastrado com sucesso")
       })
     }
 

@@ -8,7 +8,7 @@ exports.get = async (req, res) => {//colocar o async antes dos parametros
 }; 
 
 exports.post = async (req, res) => {
-    res.json(await despesaService.add(new Despesa(req.body.nome, req.body.valor, req.body.categoria, req.body.formaPagamento, req.body.data)))
+    res.json(await despesaService.add(new Despesa(req.body.descricao, req.body.valor, req.body.categoria, req.body.forma_pagamento, req.body.data)))
 };
 
 exports.getById = async (req, res) => {
