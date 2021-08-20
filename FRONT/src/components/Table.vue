@@ -1,7 +1,7 @@
 <template>
  
   <div class="tabela">
-    <table class="table table-hover">
+    <table class="table table-hover table-overflow">
       <thead>
         <tr>
           <th scope="col">#</th>
@@ -26,6 +26,14 @@
           <td> <FormUpdate/> </td>
           <td><i class="fas fa-trash-alt"></i></td>
         </tr>
+        
+        
+        
+        
+       
+       
+        
+        
       </tbody>
     </table>
   </div>
@@ -49,9 +57,11 @@ export default {
 .tabela {
   position: absolute;
   width: 60%;
-  height: 70%;
+  height: 300px;
   margin-top: 14%;
   margin-left: 20%;
   text-align: center;
+  overflow-y:auto;
 }
+
 </style>

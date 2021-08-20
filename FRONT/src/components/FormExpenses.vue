@@ -140,6 +140,6 @@ export default {
 .btn.btn-primary.bt {
   position: absolute;
   margin-left: 20%;
-  margin-top: 11%;
+  margin-top: 10%;
 }
 </style>

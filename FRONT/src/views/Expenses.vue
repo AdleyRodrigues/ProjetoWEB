@@ -19,5 +19,9 @@ export default {
 </script>
 
 <style scoped>
+.expenses{
+  height: 100vh;
+  overflow: hidden;
+}
 
 </style>
