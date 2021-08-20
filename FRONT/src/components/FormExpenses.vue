@@ -2,7 +2,7 @@
   <div class="newBtn">
     <button
       type="button"
-      class="btn btn-primary"
+      class="btn btn-primary bt"
       data-bs-toggle="modal"
       data-bs-target="#exampleModal"
     >
@@ -43,7 +43,7 @@
               <div class="mb-3">
                 <label for="despesa" class="form-label">Valor da Despesa</label>
                 <input
-                  type="text"
+                  type="number"
                   name="despesa"
                   id="despesa"
                   class="form-control"
@@ -137,4 +137,9 @@ export default {
 </script>
 
 <style scoped >
+.btn.btn-primary.bt {
+  position: absolute;
+  margin-left: 20%;
+  margin-top: 11%;
+}
 </style>
