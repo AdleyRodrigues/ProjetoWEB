@@ -13,8 +13,8 @@ exports.findAll = async () => {//listar tudo
  return result.rows;
 };
 
-exports.findOne = async (id) => {//pesquisar pelo id
-    const result = await pool.query("SELECT * FROM despesa WHERE id=$1;", [id]);
+exports.findOne = async (despesa_id) => {//pesquisar pelo id
+    const result = await pool.query("SELECT * FROM despesa WHERE despesa_id=$1;", [despesa_id]);
     return result.rows[0];
   };
   
@@ -25,14 +25,14 @@ exports.findOne = async (id) => {//pesquisar pelo id
     return result.rows;
   };
   
-  exports.update = async (id, despesa) => {//atualizar
+  exports.update = async (despesa_id, despesa) => {//atualizar
     const result = await pool.query(
-      "UPDATE despesa SET nome=$1, categoria=$2, formaPagamento=$3, data=$4 WHERE id=$5 RETURNING *;",
-      [despesa.nome, despesa.categoria, despesa.formaPagamento, despesa.data,id]
+      "UPDATE despesa SET nome=$1, categoria=$2, formaPagamento=$3, data=$4 WHERE despesa_id=$5 RETURNING *;",
+      [despesa.nome, despesa.categoria, despesa.formaPagamento, despesa.data,despesa_id]
     );
     return result.rows[0];
   };
   
-  exports.delete = async (id) => {//deletar 
-    await pool.query("DELETE FROM despesa WHERE id=$1;", [id]);
+  exports.delete = async (despesa_id) => {//deletar 
+    await pool.query("DELETE FROM despesa WHERE despesa_id=$1;", [despesa_id]);
   };

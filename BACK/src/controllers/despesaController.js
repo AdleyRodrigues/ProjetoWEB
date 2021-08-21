@@ -12,19 +12,19 @@ exports.post = async (req, res) => {
 };
 
 exports.getById = async (req, res) => {
-    res.json(await despesaService.getById(req.params.id));
+    res.json(await despesaService.getById(req.params.despesa_id));
 };
 
 exports.put = async (req, res) => {
     res.json(
         await despesaService.update(
-            req.params.id,
+            req.params.despesa_id,
             new Despesa(req.body.nome, req.body.valor, req.body.categoria, req.body.formaPagamento, req.body.data)
         )
     );
 };
 
 exports.delete = async (req, res) => {
-    res.json(await despesaService.delete(req.params.id));
+    res.json(await despesaService.delete(req.params.despesa_id));
 };
 

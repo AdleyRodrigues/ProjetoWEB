@@ -10,20 +10,20 @@ class DespesaService {
         return despesaRepo.findAll();
       }
 
-    getById(id) {
-        return despesaRepo.findOne(id);
+    getById(despesa_id) {
+        return despesaRepo.findOne(despesa_id);
     }
 
     getByName(nome) {
         return despesaRepo.findByName(nome);
     }
 
-    update(id, despesa) {
-        return despesaRepo.update(id, despesa);
+    update(despesa_id, despesa) {
+        return despesaRepo.update(despesa_id, despesa);
     }
 
-    delete(id) {
-        return despesaRepo.delete(id);
+    delete(despesa_id) {
+        return despesaRepo.delete(despesa_id);
     }
 }
 
