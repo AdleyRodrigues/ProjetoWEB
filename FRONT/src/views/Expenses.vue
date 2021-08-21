@@ -1,33 +1,27 @@
 <template>
-    
+  <div class="expenses">
+    <FormExpenses />
     <Table />
-    
+  </div>
 </template>
 
 <script>
-
-import Table from "../components/Table.vue"
-
+import Table from "../components/Table.vue";
+import FormExpenses from "../components/FormExpenses.vue";
 
 export default {
-    name: "Expenses",
-  components:{
+  name: "Expenses",
+  components: {
+    FormExpenses,
     Table,
-    
-  }
-}
+  },
+};
 </script>
 
 <style scoped>
-.tabela {
-  width: 60%;
-  height: 70%;
-  margin-top: 15%;
-  margin-left: 20%;
-  text-align: center;
+.expenses{
+  height: 100vh;
+  overflow: hidden;
 }
-
-
-
 
 </style>

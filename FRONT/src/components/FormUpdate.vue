@@ -1,17 +1,17 @@
 <template>
-  <div class="newBtn">
+  <div class="btnUpdate new">
     <button
       type="button"
-      class="btn btn-primary bt"
+      class="  btn btnUpdate"
       data-bs-toggle="modal"
-      data-bs-target="#exampleModal"
+      data-bs-target="#exampleModal1"
     >
-      + Nova Despesa
+      <i class="fas fa-pen"></i>
     </button>
 
     <div
       class="modal fade"
-      id="exampleModal"
+      id="exampleModal1"
       tabindex="-1"
       aria-labelledby="exampleModalLabel"
       aria-hidden="true"
@@ -19,7 +19,7 @@
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Inserir Despesas</h5>
+            <h5 class="modal-title" id="exampleModalLabel"> Alterar Despesa </h5>
             <button
               type="button"
               class="btn-close"
@@ -110,7 +110,7 @@
 <script>
 import api from "../services/api"
 export default {
-  name: "FormExpenses",
+  name: "FormUpdate",
   data() {
     return {
       signup: {
@@ -137,9 +137,12 @@ export default {
 </script>
 
 <style scoped >
-.btn.btn-primary.bt {
-  position: absolute;
-  margin-left: 20%;
-  margin-top: 10%;
+.btn.btnUpdate{
+    padding: 0;   
 }
+
+.modal-dialog{
+    text-align: left;
+}
+
 </style>

@@ -9,18 +9,18 @@
         <br />de quanto sobrará todos os meses e saiba como controlar suas
         depesas.
       </p>
-      
+
       <div class="cadastro">
-        <router-link to="/signin">Vamos Começar</router-link>
-        <router-view/>
-    
+        <router-link class="vamoscomecar" to="/signin" tag="button"
+          >Vamos Começar</router-link
+        >
+        <router-view />
       </div>
     </div>
     <div class="imagem">
       <img src="/img/principal.png" alt="banner" />
     </div>
   </div>
-  
 </template>
 
 <script>
@@ -54,17 +54,24 @@ export default {};
 .imagem img {
   width: 100%;
   margin-top: -395px;
-  margin-left: 70px;
+  margin-left: 100px;
   background-size: cover;
 }
 
-.cadastro a{
+.cadastro a {
+  text-decoration: none;
+  padding: 10px;
+  border-radius: 25px;
+  color: white;
+  background: #ba68c8;
+  margin-left: 10%;
+}
 
-    text-decoration: none;
-    padding: 10px;
-    border-radius: 25px;
-    color: white;
-    background: #6056c9;
-    margin-left: 10%;
+.cadastro a:hover,
+.cadastro a.router-link-active,
+.cadastro a.router-link-exact-active {
+  cursor: pointer;
+  background-color: #83498c;
+  transition-duration: 0.5s;
 }
 </style>
