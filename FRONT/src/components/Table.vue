@@ -40,10 +40,7 @@ export default {
   components: {
     FormUpdate,
   },
-  data() {
-    return {};
-  },
-  methods: {},
+
 };
 </script>
 <style scoped>

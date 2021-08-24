@@ -1,5 +1,5 @@
 <template>
-  <div class="newBtn">
+  <div class="expense">
     <button
       type="button"
       class="btn btn-primary bt"
@@ -156,7 +156,7 @@ export default {
       ) {
         alert("Os campos nao podem ficar vazios.");
       } else if (this.signup.valor < 1) {
-        alert("Valor da despesa nao pode ser zero ou menor");
+        alert("Valor da despesa nao pode ser menor ou igual a zero");
       } else {
         this.cadastrar();
         this.limparCampos();
