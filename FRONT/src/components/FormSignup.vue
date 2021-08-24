@@ -2,7 +2,7 @@
   <div class="container">
     <div class="content">
       <div class="cadastro">
-        <form class="form" action="" method="Post">
+        <form @submit.prevent="validar" class="form">
           <h1>Crie sua Conta</h1>
           <br />
 
@@ -19,7 +19,13 @@
 
           <label class="label-input" for="">
             <i class="far fa-envelope icoon"></i>
-            <input type="text" id="usuario" name="usuario" v-model="signup.usuario" placeholder="Email" />
+            <input
+              type="text"
+              id="usuario"
+              name="usuario"
+              v-model="signup.usuario"
+              placeholder="Usuario"
+            />
           </label>
 
           <label class="label-input" for="">
@@ -44,7 +50,7 @@
             />
           </label>
 
-          <button type="button" class="btnCadastrar" id="login" @click="cadastrar">
+          <button type="submit" class="btnCadastrar" id="login">
             Criar Conta
           </button>
 
@@ -60,28 +66,41 @@
 </template>
 
 <script>
-import api from "../services/api"
+import api from "../services/api";
 export default {
   name: "FormSignup",
   data() {
     return {
       signup: {
-        nome:"",
+        nome: "",
         usuario: "",
         senha: "",
-        
       },
-     
     };
   },
   methods: {
-      cadastrar(){
-      api.post('contas', this.signup).then((Response) => {
+    cadastrar() {
+      api.post("contas", this.signup).then((Response) => {
         console.log(Response.data);
-        alert("Usuario cadastrado com sucesso")
-      })
-    }
-
+        alert("Usuario cadastrado com sucesso");
+      });
+    },
+    validar() {
+      if (
+        this.signup.nome == "" ||
+        this.signup.usuario == "" ||
+        this.signup.senha == "" ||
+        this.signup.senha2 == ""
+      ) {
+        alert("Os campos nao podem ficar vazios.");
+      } else if (this.signup.senha.length < 6) {
+        alert("Senha precisa ter 6 digitos.");
+      } else if (this.signup.senha != this.signup.senha2) {
+        alert("As senhas não são iguais! Tente novamente.");
+      } else {
+        this.logar();
+      }
+    },
   },
 };
 </script>
@@ -103,7 +122,7 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-  box-shadow:10px 10px 10px rgba(50, 50, 50, 0.1);
+  box-shadow: 10px 10px 10px rgba(50, 50, 50, 0.1);
 }
 
 .form {

@@ -1,5 +1,4 @@
 <template>
- 
   <div class="tabela">
     <table class="table table-hover table-overflow">
       <thead>
@@ -23,34 +22,28 @@
           <td>Casa</td>
           <td>Dinheiro</td>
           <td>23/04/2021</td>
-          <td> <FormUpdate/> </td>
-          <td><i class="fas fa-trash-alt"></i></td>
+          <td><FormUpdate /></td>
+          <td>
+            <button class="delete"><i class="fas fa-trash-alt"></i></button>
+          </td>
         </tr>
-        
-        
-        
-        
-       
-       
-        
-        
       </tbody>
     </table>
   </div>
 </template>
 
 <script>
-import FormUpdate from "../components/FormUpdate.vue"
+import FormUpdate from "../components/FormUpdate.vue";
 
 export default {
   name: "Table",
-  components:{
-    FormUpdate
+  components: {
+    FormUpdate,
   },
   data() {
     return {};
   },
-  methods: {}
+  methods: {},
 };
 </script>
 <style scoped>
@@ -61,7 +54,11 @@ export default {
   margin-top: 14%;
   margin-left: 20%;
   text-align: center;
-  overflow-y:auto;
+  overflow-y: auto;
 }
-
+.delete {
+  background: none;
+  border: none;
+  padding: 0;
+}
 </style>

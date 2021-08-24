@@ -2,7 +2,7 @@
   <div class="container">
     <div class="content">
       <div class="login">
-        <form @submit.prevent="logar" class="form">
+        <form @submit.prevent="validar" class="form">
           <h1>Faça seu login</h1>
           <br />
 
@@ -13,7 +13,7 @@
               id="email"
               name="email"
               v-model="signin.usuario"
-              placeholder="Email"
+              placeholder="Usuario"
               autofocus
             />
           </label>
@@ -58,7 +58,6 @@ export default {
 
         
       },
-     
     };
   },
   methods:{
@@ -73,6 +72,17 @@ export default {
           alert("login ou senha incorretos!");
         }
       })
+    },
+    validar(){
+      if(this.signin.usuario == '' || this.signin.senha == ''){
+        alert("Os campos nao podem ficar vazios.")
+      }
+      else if(this.signin.senha.length < 6){
+        alert("Senha precisa ter 6 digitos.")
+      }
+      else{
+        this.logar();
+      }
     }
   },
 };

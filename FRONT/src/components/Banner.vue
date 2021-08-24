@@ -11,7 +11,7 @@
       </p>
 
       <div class="cadastro">
-        <router-link class="vamoscomecar" to="/signin" tag="button"
+        <router-link class="vamoscomecar" to="/signin"
           >Vamos Começar</router-link
         >
         <router-view />
@@ -38,9 +38,11 @@ export default {};
 
 .descricao h1 {
   font-size: 43px;
+  text-align: left;
 }
 
 .descricao p {
+ 
   font-size: 15px;
   margin: 30px 0 30px 20px;
   line-height: 25px;

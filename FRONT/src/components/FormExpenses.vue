@@ -53,7 +53,12 @@
 
               <div class="mb-3">
                 <label for="categoria" class="form-label">Categoria</label>
-                <select name="categoria" id="categoria" class="form-control" v-model="signup.categoria">
+                <select
+                  name="categoria"
+                  id="categoria"
+                  class="form-control"
+                  v-model="signup.categoria"
+                >
                   <option value="0" selected></option>
                   <option value="Casa">Casa</option>
                   <option value="Carro">Carro</option>
@@ -68,7 +73,12 @@
                 <label for="pagamento" class="form-label"
                   >Forma de Pagamento</label
                 >
-                <select name="pagamento" id="pagamento" class="form-control" v-model="signup.forma_pagamento">
+                <select
+                  name="pagamento"
+                  id="pagamento"
+                  class="form-control"
+                  v-model="signup.forma_pagamento"
+                >
                   <option value="0" selected></option>
                   <option value="Cartão de Crédito">Cartão de Crédito</option>
                   <option value="Débito">Débito</option>
@@ -78,16 +88,21 @@
 
               <div class="mb-3">
                 <label for="data" class="form-label">Data</label>
-                <input type="date" name="data" id="data" class="form-control" v-model="signup.data" />
+                <input
+                  type="date"
+                  name="data"
+                  id="data"
+                  class="form-control"
+                  v-model="signup.data"
+                />
               </div>
-              
             </form>
           </div>
           <div class="modal-footer">
             <button
               type="button"
               class="btn btn-tertiary"
-              data-bs-dismiss="modal"
+              @click="limparCampos"
             >
               Limpar Campos
             </button>
@@ -97,9 +112,11 @@
               class="btn btn-secondary"
               data-bs-dismiss="modal"
             >
-              Close
+              cancelar
             </button>
-            <button type="button" class="btn btn-primary">Save changes</button>
+            <button type="button" class="btn btn-primary" @click="validar">
+              Inserir
+            </button>
           </div>
         </div>
       </div>
@@ -108,30 +125,50 @@
 </template>
 
 <script>
-import api from "../services/api"
+import api from "../services/api";
 export default {
   name: "FormExpenses",
   data() {
     return {
       signup: {
-        descrição:"",
+        descricao: "",
         valor: "",
         categoria: "",
         forma_pagamento: "",
-         data: "",
-        
+        data: "",
       },
-     
     };
   },
   methods: {
-      cadastrar(){
-      api.post('despesas', this.signup).then((Response) => {
+    cadastrar() {
+      api.post("despesas", this.signup).then((Response) => {
         console.log(Response.data);
-        alert("Despesa cadastrada com sucesso")
-      })
-    }
-
+        alert("Despesa cadastrada com sucesso");
+      });
+    },
+    validar() {
+      if (
+        this.signup.descricao == "" ||
+        this.signup.valor == "" ||
+        this.signup.categoria == "" ||
+        this.signup.data == "" ||
+        this.signup.descricao == ""
+      ) {
+        alert("Os campos nao podem ficar vazios.");
+      } else if (this.signup.valor < 1) {
+        alert("Valor da despesa nao pode ser zero ou menor");
+      } else {
+        this.cadastrar();
+        this.limparCampos();
+      }
+    },
+    limparCampos() {
+      this.signup.descricao = "";
+      this.signup.valor = "";
+      this.signup.categoria = "";
+      this.signup.forma_pagamento = "";
+      this.signup.data = "";
+    },
   },
 };
 </script>
