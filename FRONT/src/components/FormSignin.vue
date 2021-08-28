@@ -33,7 +33,9 @@
 
           <br /><br />
 
-          <router-link class="cadastroConta" to="/signup">Não tem login ? Cadastre-se aqui</router-link>
+          <router-link class="cadastroConta" to="/signup"
+            >Não tem login ? Cadastre-se aqui</router-link
+          >
           <br /><br />
           <router-link class="home" to="/"> Pagina Inicial</router-link>
         </form>
@@ -55,39 +57,46 @@ export default {
       signin: {
         usuario: "",
         senha: "",
-
-        
       },
     };
   },
-  methods:{
-    logar(){
-      api.post('login', this.signin).then((Response) => {
-        //console.log(Response.data.email);
+  methods: {
+    logar() {
+      api
+        .post("users/login/", this.signin, { withCredentials: true })
+        .then((result) => {
+          let userId = this.getCookie("userId");
 
-        if(Response.data.success){
-          //console.log(Response);
-          window.location.href = "http://localhost:8080/expenses";
-        }else{
-          alert("login ou senha incorretos!");
-        }
-      })
+          if (userId) {
+            localStorage.setItem("user", JSON.stringify(result.data));
+          }
+          this.$router.push("/expenses");
+
+          // if (Response.data.success) {
+          //   //console.log(Response);
+          //   window.location.href = "http://localhost:8080/expenses";
+          // } else {
+          //   alert("login ou senha incorretos!");
+          // }
+        });
     },
-    validar(){
-      if(this.signin.usuario == '' || this.signin.senha == ''){
-        alert("Os campos nao podem ficar vazios.")
-      }
-      else if(this.signin.senha.length < 6){
-        alert("Senha precisa ter 6 digitos.")
-      }
-      else{
+    getCookie(name) {
+      let match = document.cookie.match(new RegExp(name + "=([^;]+)"));
+      if (match) return match[1];
+      return;
+    },
+    validar() {
+      if (this.signin.usuario == "" || this.signin.senha == "") {
+        alert("Os campos nao podem ficar vazios.");
+      } else if (this.signin.senha.length < 6) {
+        alert("Senha precisa ter 6 digitos.");
+      } else {
         this.logar();
       }
-    }
+    },
   },
 };
-    //console.log(baseURI);
-
+//console.log(baseURI);
 </script>
 
 <style scoped>
@@ -108,7 +117,7 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-  box-shadow:10px 10px 10px rgba(50, 50, 50, 0.1);
+  box-shadow: 10px 10px 10px rgba(50, 50, 50, 0.1);
 }
 
 .form {

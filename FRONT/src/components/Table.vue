@@ -1,5 +1,6 @@
 <template>
   <div class="tabela">
+    <button type="button" class="btn btn-outline-danger" @click="logout">Logout</button>
     <table class="table table-hover table-overflow">
       <thead>
         <tr>
@@ -34,13 +35,23 @@
 
 <script>
 import FormUpdate from "../components/FormUpdate.vue";
-
+import api from "../services/api";
 export default {
   name: "Table",
   components: {
     FormUpdate,
   },
-
+  methods: {
+    logout() {
+      api.get("users/logout").then((result) => {
+        //this.logged = false;
+        console.log(result);
+        localStorage.removeItem("user");
+        console.log(result);
+        this.$router.push("/");
+      });
+    },
+  },
 };
 </script>
 <style scoped>

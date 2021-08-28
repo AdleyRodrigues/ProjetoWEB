@@ -50,7 +50,7 @@
             />
           </label>
 
-          <button type="submit" class="btnCadastrar" id="login">
+          <button type="submit" class="btnCadastrar" id="cadastrar">
             Criar Conta
           </button>
 
@@ -81,7 +81,7 @@ export default {
   methods: {
     cadastrar() {
       api.post("contas", this.signup).then((Response) => {
-        console.log(Response.data);
+        console.log(this.signup);
         alert("Usuario cadastrado com sucesso");
       });
     },
@@ -98,7 +98,7 @@ export default {
       } else if (this.signup.senha != this.signup.senha2) {
         alert("As senhas não são iguais! Tente novamente.");
       } else {
-        this.logar();
+        this.cadastrar();
       }
     },
   },

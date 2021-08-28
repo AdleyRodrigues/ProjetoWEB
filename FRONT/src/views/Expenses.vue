@@ -15,6 +15,13 @@ export default {
     FormExpenses,
     Table,
   },
+  created() {
+    if (localStorage.getItem("user")) {
+      console.log("Ok")
+    }else{
+      this.$router.push("/signin");
+    }
+  },
 };
 </script>
 

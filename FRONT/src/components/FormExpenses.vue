@@ -169,6 +169,14 @@ export default {
       this.signup.forma_pagamento = "";
       this.signup.data = "";
     },
+    
+  logout() {
+      api.get("users/logout").then((result) => {
+        this.logged = false;
+        localStorage.removeItem("user");
+        console.log(result);
+      });
+    },
   },
 };
 </script>
