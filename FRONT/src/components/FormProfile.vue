@@ -6,7 +6,7 @@
           <ul class="nav nav-tabs mb-4" id="myTab" role="tablist"></ul>
           <form>
             <div class="row mt-5 align-items-center">
-              <div class="col-md-3 text-center mb-5">
+              <div class="col-md-3 text-center mb-1">
                 <div class="avatar avatar-xl">
                   <img
                     src="https://bootdey.com/img/Content/avatar/avatar6.png"
