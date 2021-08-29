@@ -1,19 +1,19 @@
 <template>
   <div class="expenses">
     <FormExpenses />
-    <Table />
+   
   </div>
 </template>
 
 <script>
-import Table from "../components/Table.vue";
+
 import FormExpenses from "../components/FormExpenses.vue";
 
 export default {
   name: "Expenses",
   components: {
     FormExpenses,
-    Table,
+    
   },
   created() {
     if (localStorage.getItem("user")) {

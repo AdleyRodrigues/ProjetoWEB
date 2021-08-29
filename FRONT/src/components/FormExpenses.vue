@@ -1,5 +1,22 @@
 <template>
   <div class="expense">
+    <router-link to="/profile" class="btn btn-outline-info"> Meu Perfil</router-link>
+    <button type="button" class="btn btn-outline-danger btsair" @click="logout">
+      Sair
+    </button>
+    <div class="input-group pesquisaqtd">
+      <input
+        type="number"
+        name="descricao"
+        id="descricao"
+        class="form-control inputqtd"
+        v-model="qtd"
+        placeholder="Pesquisa Quantidade"
+      />
+      <button type="button" class="btn btn-warning">
+        <i class="fas fa-search"></i>
+      </button>
+    </div>
     <button
       type="button"
       class="btn btn-primary bt"
@@ -121,13 +138,49 @@
         </div>
       </div>
     </div>
+
+    <div class="tabela">
+      <table class="table table-hover table-overflow">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Descrição</th>
+            <th scope="col">Valor</th>
+            <th scope="col">Categoria</th>
+            <th scope="col">Forma de Pagamento</th>
+            <th scope="col">Data</th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <!-- Daqui -->
+            <th scope="row">1</th>
+            <td>internet</td>
+            <td>R$ 70,00</td>
+            <td>Casa</td>
+            <td>Dinheiro</td>
+            <td>23/04/2021</td>
+            <td><FormUpdate /></td>
+            <td>
+              <button class="delete"><i class="fas fa-trash-alt"></i></button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
 </template>
 
 <script>
+import FormUpdate from "../components/FormUpdate.vue";
 import api from "../services/api";
 export default {
   name: "FormExpenses",
+  components: {
+    FormUpdate,
+  },
   data() {
     return {
       signup: {
@@ -160,7 +213,6 @@ export default {
       } else {
         this.cadastrar();
         this.limparCampos();
-        
       }
     },
     limparCampos() {
@@ -170,8 +222,8 @@ export default {
       this.signup.forma_pagamento = "";
       this.signup.data = "";
     },
-    
-  logout() {
+
+    logout() {
       api.get("users/logout").then((result) => {
         this.logged = false;
         localStorage.removeItem("user");
@@ -187,5 +239,41 @@ export default {
   position: absolute;
   margin-left: 20%;
   margin-top: 10%;
+}
+.btn.btn-outline-danger.btsair {
+  position: absolute;
+  margin-left: 75%;
+  margin-top: 20px;
+  border: none;
+}
+
+.input-group.pesquisaqtd {
+  width: 19%;
+  position: absolute;
+  margin-left: 35%;
+  margin-top: 10%;
+}
+
+.expense a{
+  position: absolute;
+  
+    text-decoration: none;
+     margin-left: 67%;
+  margin-top: 20px;
+}
+
+.tabela {
+  position: absolute;
+  width: 60%;
+  height: 300px;
+  margin-top: 14%;
+  margin-left: 20%;
+  text-align: center;
+  overflow-y: auto;
+}
+.delete {
+  background: none;
+  border: none;
+  padding: 0;
 }
 </style>
