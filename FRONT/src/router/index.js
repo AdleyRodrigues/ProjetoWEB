@@ -4,6 +4,7 @@ import Signin from '../views/Signin.vue'
 import Signup from '../views/Signup.vue'
 import Expenses from '../views/Expenses.vue'
 import NotFound from '../views/NotFound.vue'
+import Profile from '../views/Profile.vue'
 
 const routes = [
   {
@@ -26,6 +27,11 @@ const routes = [
     path: '/expenses',
     name: 'Expenses',
     component: Expenses
+  },
+  {
+    path: '/profile',
+    name: 'Profile',
+    component: Profile
   },
  
   { path: "/:pathMatch(.*)*", name: "NotFound", component: NotFound },

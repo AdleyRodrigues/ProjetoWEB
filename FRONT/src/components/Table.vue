@@ -1,6 +1,6 @@
 <template>
   <div class="tabela">
-    <button type="button" class="btn btn-outline-danger" @click="logout">Logout</button>
+    <button type="button" class="btn btn-outline-danger" @click="logout">Sair</button>
     <table class="table table-hover table-overflow">
       <thead>
         <tr>

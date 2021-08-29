@@ -77,7 +77,7 @@
                   name="pagamento"
                   id="pagamento"
                   class="form-control"
-                  v-model="signup.forma_pagamento"
+                  v-model="signup.pagamento"
                 >
                   <option value="0" selected></option>
                   <option value="Cartão de Crédito">Cartão de Crédito</option>
@@ -134,7 +134,7 @@ export default {
         descricao: "",
         valor: "",
         categoria: "",
-        forma_pagamento: "",
+        pagamento: "",
         data: "",
       },
     };
@@ -142,7 +142,7 @@ export default {
   methods: {
     cadastrar() {
       api.post("despesas", this.signup).then((Response) => {
-        console.log(Response.data);
+        console.log(this.signup);
         alert("Despesa cadastrada com sucesso");
       });
     },
@@ -160,6 +160,7 @@ export default {
       } else {
         this.cadastrar();
         this.limparCampos();
+        
       }
     },
     limparCampos() {
