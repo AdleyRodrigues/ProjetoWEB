@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="container-fluid">
     <div class="content">
       <div class="cadastro">
         <form @submit.prevent="validar" class="form">
@@ -106,10 +106,12 @@ export default {
 </script>
 
 <style scoped>
-.container {
-  display: flex;
+.container-fluid{
+  
+   display: flex;
   justify-content: center;
   align-items: center;
+  width: 100vw;
   height: 100vh;
   background-color: #f1f1f2;
 }
@@ -117,7 +119,7 @@ export default {
 .content {
   background-color: #fff;
   border-radius: 15px;
-  width: 80%;
+  width: 68%;
   height: 70%;
   display: flex;
   justify-content: center;

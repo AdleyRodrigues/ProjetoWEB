@@ -61,7 +61,7 @@ export default {};
 .imagem img {
   width: 100%;
   margin-top: -395px;
-  margin-left: 100px;
+  margin-left: 150px;
   background-size: cover;
 }
 
