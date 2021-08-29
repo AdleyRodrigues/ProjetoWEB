@@ -183,4 +183,14 @@ export default {
 .modal-dialog {
   text-align: left;
 }
+
+input:focus {
+  box-shadow: 0 0 0 0;
+  outline: 0;
+}
+
+select:focus{
+  box-shadow: 0 0 0 0;
+  outline: 0;
+}
 </style>

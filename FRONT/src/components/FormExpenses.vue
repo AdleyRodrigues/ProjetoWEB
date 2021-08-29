@@ -276,4 +276,14 @@ export default {
   border: none;
   padding: 0;
 }
+
+input:focus {
+  box-shadow: 0 0 0 0;
+  outline: 0;
+}
+
+select:focus{
+  box-shadow: 0 0 0 0;
+  outline: 0;
+}
 </style>
