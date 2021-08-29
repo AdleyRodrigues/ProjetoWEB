@@ -4,11 +4,24 @@
     <button type="button" class="btn btn-outline-danger btsair" @click="logout">
       Sair
     </button>
+    <div class="input-group pesquisaDescricao">
+      <input
+        type="text"
+        name="descricao"
+        id="descricao"
+        class="form-control inputDescricao"
+        v-model="qtd"
+        placeholder="Pesquisa Nome"
+      />
+      <button type="button" class="btn btn-warning">
+        <i class="fas fa-search"></i>
+      </button>
+    </div>
     <div class="input-group pesquisaqtd">
       <input
         type="number"
-        name="descricao"
-        id="descricao"
+        name="quantidade"
+        id="quantidade"
         class="form-control inputqtd"
         v-model="qtd"
         placeholder="Pesquisa Quantidade"
@@ -251,6 +264,13 @@ export default {
   width: 19%;
   position: absolute;
   margin-left: 35%;
+  margin-top: 10%;
+}
+
+.input-group.pesquisaDescricao {
+  width: 19%;
+  position: absolute;
+  margin-left: 56%;
   margin-top: 10%;
 }
 
