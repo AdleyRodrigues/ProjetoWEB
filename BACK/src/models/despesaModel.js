@@ -1,11 +1,11 @@
 class Despesa {
-    constructor(descricao, valor, categoria, forma_pagamento, data){
+    constructor(descricao, valor, categoria, pagamento, despesa_data, conta_id){
         this.descricao = descricao;
         this.valor = valor;
         this.categoria = categoria;
-        this.forma_pagamento = forma_pagamento;
-        this.data = data;
-
+        this.pagamento = pagamento;
+        this.despesa_data = despesa_data;
+        this.conta_id = conta_id;
     }
 }
 

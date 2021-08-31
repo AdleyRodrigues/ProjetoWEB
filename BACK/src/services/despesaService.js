@@ -18,6 +18,10 @@ class DespesaService {
         return despesaRepo.findByName(nome);
     }
 
+    getByQtd(qtd) {
+        return despesaRepo.findByQtd(qtd);
+    }
+
     update(despesa_id, despesa) {
         return despesaRepo.update(despesa_id, despesa);
     }

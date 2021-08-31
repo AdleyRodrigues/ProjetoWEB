@@ -1,6 +1,8 @@
 <template>
   <div class="expense">
-    <router-link to="/profile" class="btn btn-outline-info"> Meu Perfil</router-link>
+    <router-link to="/profile" class="btn btn-outline-info">
+      Meu Perfil</router-link
+    >
     <button type="button" class="btn btn-outline-danger btsair" @click="logout">
       Sair
     </button>
@@ -10,7 +12,7 @@
         name="descricao"
         id="descricao"
         class="form-control inputDescricao"
-        v-model="qtd"
+        v-model="buscaDescricao"
         placeholder="Pesquisa Nome"
       />
       <button type="button" class="btn btn-warning">
@@ -23,10 +25,10 @@
         name="quantidade"
         id="quantidade"
         class="form-control inputqtd"
-        v-model="qtd"
+        v-model="buscaQuantidade"
         placeholder="Pesquisa Quantidade"
       />
-      <button type="button" class="btn btn-warning">
+      <button type="button" class="btn btn-warning" @click="getDespesasQtd">
         <i class="fas fa-search"></i>
       </button>
     </div>
@@ -123,7 +125,7 @@
                   name="data"
                   id="data"
                   class="form-control"
-                  v-model="signup.data"
+                  v-model="signup.despesa_data"
                 />
               </div>
             </form>
@@ -167,14 +169,14 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
+          <tr v-for="despesas in listaDespesas" :key="despesas.despesa_id">
             <!-- Daqui -->
-            <th scope="row">1</th>
-            <td>internet</td>
-            <td>R$ 70,00</td>
-            <td>Casa</td>
-            <td>Dinheiro</td>
-            <td>23/04/2021</td>
+            <th scope="row">{{ despesas.despesa_id }}</th>
+            <td>{{ despesas.descricao }}</td>
+            <td>{{ despesas.valor }}</td>
+            <td>{{ despesas.categoria }}</td>
+            <td>{{ despesas.pagamento }}</td>
+            <td>{{ despesas.despesa_data }}</td>
             <td><FormUpdate /></td>
             <td>
               <button class="delete"><i class="fas fa-trash-alt"></i></button>
@@ -201,15 +203,43 @@ export default {
         valor: "",
         categoria: "",
         pagamento: "",
-        data: "",
+        despesa_data: "",
+        conta_id: ""
       },
+      listaDespesas: [],
+      buscaQuantidade: 0,
+      buscaDescricao: "",
+
     };
   },
   methods: {
     cadastrar() {
+      this.signup.conta_id = JSON.parse(sessionStorage.getItem("user")).conta_id;
       api.post("despesas", this.signup).then((Response) => {
-        console.log(this.signup);
-        alert("Despesa cadastrada com sucesso");
+        this.listaDespesas.push(Response.data);
+        //alert("Despesa cadastrada com sucesso");
+      });
+    },
+    getDespesas() {
+      var user = JSON.parse(sessionStorage.getItem("user"));
+      api.get("despesas").then((Response) => {
+        Response.data.forEach(element=>{
+          if(element.conta_id == user.conta_id) {
+            this.listaDespesas.push(element);
+          }
+        })
+      });
+    },
+    getDespesasQtd(){
+      var user = JSON.parse(sessionStorage.getItem("user"));
+      api.get("despesas/qtd/"+this.buscaQuantidade).then((Response) => {
+        console.log(Response.data);
+        Response.data.forEach(element=>{
+          if(element.conta_id == user.conta_id) {
+            this.listaDespesas.push(element);
+            console.log(this.listaDespesas)
+          }
+        })
       });
     },
     validar() {
@@ -239,11 +269,17 @@ export default {
     logout() {
       api.get("users/logout").then((result) => {
         this.logged = false;
-        localStorage.removeItem("user");
+        sessionStorage.removeItem("user");
         console.log(result);
+        this.$router.push("/signin");
       });
     },
+    
   },
+  mounted() {
+      this.getDespesas();
+      
+    },
 };
 </script>
 
@@ -274,11 +310,11 @@ export default {
   margin-top: 10%;
 }
 
-.expense a{
+.expense a {
   position: absolute;
-  
-    text-decoration: none;
-     margin-left: 67%;
+
+  text-decoration: none;
+  margin-left: 67%;
   margin-top: 20px;
 }
 
@@ -302,7 +338,7 @@ input:focus {
   outline: 0;
 }
 
-select:focus{
+select:focus {
   box-shadow: 0 0 0 0;
   outline: 0;
 }

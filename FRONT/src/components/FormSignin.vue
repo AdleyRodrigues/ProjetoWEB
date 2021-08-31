@@ -66,9 +66,9 @@ export default {
         .post("users/login/", this.signin, { withCredentials: true })
         .then((result) => {
           let userId = this.getCookie("userId");
-
+          console.log(result.data);
           if (userId) {
-            localStorage.setItem("user", JSON.stringify(result.data));
+            sessionStorage.setItem("user", JSON.stringify(result.data));
           }
           this.$router.push("/expenses");
 
