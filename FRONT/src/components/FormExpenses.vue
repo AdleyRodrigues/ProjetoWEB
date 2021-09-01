@@ -179,7 +179,7 @@
             <td>{{ despesas.despesa_data }}</td>
             <td><FormUpdate /></td>
             <td>
-              <button class="delete"><i class="fas fa-trash-alt"></i></button>
+              <button class="delete" @click="deleteDespesas(despesas.despesa_id )"><i class="fas fa-trash-alt"></i></button>
             </td>
           </tr>
         </tbody>
@@ -221,11 +221,13 @@ export default {
       });
     },
     getDespesas() {
+      this.listaDespesas = [];
       var user = JSON.parse(sessionStorage.getItem("user"));
       api.get("despesas").then((Response) => {
         Response.data.forEach(element=>{
           if(element.conta_id == user.conta_id) {
             this.listaDespesas.push(element);
+            //console.log(this.listaDespesas)
           }
         })
       });
@@ -237,10 +239,17 @@ export default {
         Response.data.forEach(element=>{
           if(element.conta_id == user.conta_id) {
             this.listaDespesas.push(element);
-            console.log(this.listaDespesas)
+            //console.log(this.listaDespesas)
           }
         })
       });
+    },
+    deleteDespesas(id){
+      api.delete("despesas/"+id).then((Response) => {
+        //console.log(this.listaDespesas[0].despesa_id)
+        this.getDespesas();
+        
+      })
     },
     validar() {
       if (
