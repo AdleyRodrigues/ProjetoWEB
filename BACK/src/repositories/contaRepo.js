@@ -2,8 +2,8 @@
 
 exports.save = async (conta) => {//adicionar
     const result = await pool.query(
-      "INSERT INTO conta(nome, usuario, senha) VALUES ($1,$2,$3) RETURNING *;",
-      [conta.nome, conta.usuario, conta.senha]
+      "INSERT INTO conta(nome, usuario, senha, avatar) VALUES ($1,$2,$3, $4) RETURNING *;",
+      [conta.nome, conta.usuario, conta.senha, conta.avatar]
     );
     return result.rows[0];
   };

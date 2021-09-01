@@ -7,7 +7,8 @@ exports.get = async (req, res) => {//colocar o async antes dos parametros
 };
 
 exports.post = async (req, res) => {
-    res.json(await contaService.add(new Conta(req.body.nome, req.body.usuario, req.body.senha)))
+    let avatar = req.file ? `uploads/${req.file.originalname}` : '';
+    res.json(await contaService.add(new Conta(req.body.nome, req.body.usuario, req.body.senha, avatar)));
 };
 
 exports.getById = async (req, res) => {

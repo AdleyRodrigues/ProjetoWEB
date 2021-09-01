@@ -9,6 +9,7 @@
               <div class="col-md-3 text-center mb-1">
                 <div class="avatar avatar-xl">
                   <img
+
                     src="https://bootdey.com/img/Content/avatar/avatar6.png"
                     alt="..."
                     class="avatar-img rounded-circle"
@@ -18,7 +19,7 @@
               <div class="col">
                 <div class="row align-items-center">
                   <div class="col-md-7">
-                    <h4 class="mb-1">Adley</h4>
+                  
                   </div>
                 </div>
               </div>
@@ -84,7 +85,24 @@
 </template>
 
 <script>
-export default {};
+import axios from "axios";
+export default 
+{
+  name: "InsertImg",
+  data() {
+    return {
+      img: "",
+      baseURI: "http://localhost:8081/img",
+      baseUpload: "http://localhost:8081/upload",
+    };
+  },
+  methods: {
+    handleFileUpload(id) 
+    {
+      
+    }
+  }
+};
 </script>
 
 <style scoped>
