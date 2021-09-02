@@ -9,13 +9,13 @@ exports.save = async (despesa) => {//adicionar
   };
 
 exports.findAll = async () => {//listar tudo
- const result = await pool.query("SELECT * FROM despesa;");
+ const result = await pool.query("SELECT * FROM despesa order by despesa_id;");
  return result.rows;
 };
 
-exports.findOne = async (conta_id) => {//pesquisar pelo id
-    const result = await pool.query("SELECT * FROM despesa WHERE conta_id=$1;", [conta_id]);
-    return result.rows;
+exports.findOne = async (despesa_id) => {//pesquisar pelo id
+    const result = await pool.query("SELECT * FROM despesa WHERE despesa_id=$1;", [despesa_id]);
+    return result.rows[0];
   };
   
   exports.findByQtd = async (qtd) => {//pesquisar pela qtd
@@ -25,8 +25,8 @@ exports.findOne = async (conta_id) => {//pesquisar pelo id
   
   exports.update = async (despesa_id, despesa) => {//atualizar
     const result = await pool.query(
-      "UPDATE despesa SET nome=$1, categoria=$2, pagamento=$3, data=$4 WHERE despesa_id=$5 RETURNING *;",
-      [despesa.nome, despesa.categoria, despesa.pagamento, despesa.data,despesa_id]
+      "UPDATE despesa SET descricao=$1, valor=$2, categoria=$3, pagamento=$4, despesa_data=$5 WHERE despesa_id=$6 RETURNING *;",
+      [despesa.descricao, despesa.valor, despesa.categoria, despesa.pagamento, despesa.despesa_data,despesa_id]
     );
     return result.rows[0];
   };

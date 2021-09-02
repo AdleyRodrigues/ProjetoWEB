@@ -177,9 +177,20 @@
             <td>{{ despesas.categoria }}</td>
             <td>{{ despesas.pagamento }}</td>
             <td>{{ despesas.despesa_data }}</td>
-            <td><FormUpdate /></td>
             <td>
-              <button class="delete" @click="deleteDespesas(despesas.despesa_id )"><i class="fas fa-trash-alt"></i></button>
+              <router-link
+                :to="{ name: 'update', params: { id: despesas.despesa_id } }"
+                class="btn-update"
+                ><i class="fas fa-pen"></i
+              ></router-link>
+            </td>
+            <td>
+              <button
+                class="delete"
+                @click="deleteDespesas(despesas.despesa_id)"
+              >
+                <i class="fas fa-trash-alt"></i>
+              </button>
             </td>
           </tr>
         </tbody>
@@ -204,17 +215,18 @@ export default {
         categoria: "",
         pagamento: "",
         despesa_data: "",
-        conta_id: ""
+        conta_id: "",
       },
       listaDespesas: [],
-      buscaQuantidade: 0,
+      buscaQuantidade: "",
       buscaDescricao: "",
-
     };
   },
   methods: {
     cadastrar() {
-      this.signup.conta_id = JSON.parse(sessionStorage.getItem("user")).conta_id;
+      this.signup.conta_id = JSON.parse(
+        sessionStorage.getItem("user")
+      ).conta_id;
       api.post("despesas", this.signup).then((Response) => {
         this.listaDespesas.push(Response.data);
         //alert("Despesa cadastrada com sucesso");
@@ -224,40 +236,40 @@ export default {
       this.listaDespesas = [];
       var user = JSON.parse(sessionStorage.getItem("user"));
       api.get("despesas").then((Response) => {
-        Response.data.forEach(element=>{
-          if(element.conta_id == user.conta_id) {
+        Response.data.forEach((element) => {
+          if (element.conta_id == user.conta_id) {
             this.listaDespesas.push(element);
             //console.log(this.listaDespesas)
           }
-        })
+        });
       });
     },
-    getDespesasQtd(){
+    getDespesasQtd() {
+      this.listaDespesas = [];
       var user = JSON.parse(sessionStorage.getItem("user"));
-      api.get("despesas/qtd/"+this.buscaQuantidade).then((Response) => {
+      api.get("despesas/qtd/" + this.buscaQuantidade).then((Response) => {
         console.log(Response.data);
-        Response.data.forEach(element=>{
-          if(element.conta_id == user.conta_id) {
+        Response.data.forEach((element) => {
+          if (element.conta_id == user.conta_id) {
             this.listaDespesas.push(element);
-            //console.log(this.listaDespesas)
+            console.log(this.listaDespesas);
           }
-        })
+        });
       });
     },
-    deleteDespesas(id){
-      api.delete("despesas/"+id).then((Response) => {
+    deleteDespesas(id) {
+      api.delete("despesas/" + id).then((Response) => {
         //console.log(this.listaDespesas[0].despesa_id)
         this.getDespesas();
-        
-      })
+      });
     },
     validar() {
       if (
         this.signup.descricao == "" ||
         this.signup.valor == "" ||
         this.signup.categoria == "" ||
-        this.signup.data == "" ||
-        this.signup.descricao == ""
+        this.signup.pagamento == "" ||
+        this.signup.despesa_data == ""
       ) {
         alert("Os campos nao podem ficar vazios.");
       } else if (this.signup.valor < 1) {
@@ -271,8 +283,8 @@ export default {
       this.signup.descricao = "";
       this.signup.valor = "";
       this.signup.categoria = "";
-      this.signup.forma_pagamento = "";
-      this.signup.data = "";
+      this.signup.pagamento = "";
+      this.signup.despesa_data = "";
     },
 
     logout() {
@@ -283,12 +295,10 @@ export default {
         this.$router.push("/signin");
       });
     },
-    
   },
   mounted() {
-      this.getDespesas();
-      
-    },
+    this.getDespesas();
+  },
 };
 </script>
 
@@ -319,12 +329,18 @@ export default {
   margin-top: 10%;
 }
 
-.expense a {
+.expense a.btn.btn-outline-info {
   position: absolute;
 
   text-decoration: none;
   margin-left: 67%;
   margin-top: 20px;
+}
+.expense a.btn-update {
+  
+  
+  text-decoration: none;
+  
 }
 
 .tabela {

@@ -7,7 +7,7 @@ router.post("/", despesaController.post);
 router.get("/:despesa_id", despesaController.getById);
 router.get("/qtd/:qtd", despesaController.getByQtd);
 router.put("/:despesa_id", despesaController.put);
-router.delete("/:id", despesaController.delete);
+router.delete("/:despesa_id", despesaController.delete);
 
 module.exports = router;
 

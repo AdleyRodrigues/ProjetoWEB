@@ -23,7 +23,7 @@ exports.put = async (req, res) => {
     res.json(
         await despesaService.update(
             req.params.despesa_id,
-            new Despesa(req.body.nome, req.body.valor, req.body.categoria, req.body.formaPagamento, req.body.data)
+            new Despesa(req.body.descricao, req.body.valor, req.body.categoria, req.body.pagamento, req.body.despesa_data)
         )
     );
 };

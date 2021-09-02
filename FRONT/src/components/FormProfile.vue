@@ -32,6 +32,7 @@
                   type="text"
                   id="firstname"
                   class="form-control border-secondary"
+                  v-model="nome"
                   placeholder="zé da foice"
                 />
               </div>
@@ -42,6 +43,7 @@
                 type="email"
                 class="form-control border-secondary"
                 id="inputEmail4"
+                v-model="usuario"
                 placeholder="zédafoice"
               />
             </div>
@@ -86,21 +88,38 @@
 
 <script>
 import axios from "axios";
+import api from "../services/api";
 export default 
 {
   name: "InsertImg",
   data() {
     return {
+      users:[],
       img: "",
       baseURI: "http://localhost:8081/img",
       baseUpload: "http://localhost:8081/upload",
     };
   },
+  mounted() {
+    this.getUsers() ;
+  },
   methods: {
     handleFileUpload(id) 
     {
       
-    }
+    },
+    getUsers() {
+      
+      var user = JSON.parse(sessionStorage.getItem("user"));
+      api.get("contas").then((Response) => {
+        Response.data.forEach((element) => {
+          if (element.conta_id == user.conta_id) {
+            this.users.push(element);
+            console.log(this.users);
+          }
+        });
+      });
+    },
   }
 };
 </script>

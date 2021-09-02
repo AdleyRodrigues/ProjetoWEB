@@ -5,6 +5,7 @@ import Signup from '../views/Signup.vue'
 import Expenses from '../views/Expenses.vue'
 import NotFound from '../views/NotFound.vue'
 import Profile from '../views/Profile.vue'
+import Update from '../components/FormUpdate.vue'
 
 const routes = [
   {
@@ -32,6 +33,11 @@ const routes = [
     path: '/profile',
     name: 'Profile',
     component: Profile
+  },
+  {
+    path: '/update/:id',
+    name: 'update',
+    component: Update
   },
  
   { path: "/:pathMatch(.*)*", name: "NotFound", component: NotFound },
