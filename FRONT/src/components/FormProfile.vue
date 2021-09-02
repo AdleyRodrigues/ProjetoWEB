@@ -9,8 +9,7 @@
               <div class="col-md-3 text-center mb-1">
                 <div class="avatar avatar-xl">
                   <img
-
-                    src="https://bootdey.com/img/Content/avatar/avatar6.png"
+                    :src="'http://localhost:3033/uploads/conta/' + users.conta_id" 
                     alt="..."
                     class="avatar-img rounded-circle"
                   />
@@ -32,7 +31,7 @@
                   type="text"
                   id="firstname"
                   class="form-control border-secondary"
-                  v-model="nome"
+                  v-model="users.nome"
                   placeholder="zé da foice"
                 />
               </div>
@@ -40,10 +39,10 @@
             <div class="form-group">
               <label for="inputEmail4">Usuario</label>
               <input
-                type="email"
+                type="text"
                 class="form-control border-secondary"
                 id="inputEmail4"
-                v-model="usuario"
+                v-model="users.usuario"
                 placeholder="zédafoice"
               />
             </div>
@@ -58,6 +57,7 @@
                     type="password"
                     class="form-control border-secondary"
                     id="inputPassword5"
+                    v-model="users.senha"
                   />
                 </div>
                 <div class="form-group">
@@ -78,7 +78,10 @@
                 </div>
               </div>
             </div>
-            <button type="submit" class="btn btn-primary">Save Change</button>
+            <button type="submit" class="btn btn-primary" @click="update">Alterar Perfil</button>
+            <div>
+                <button type="submit" class="btn btn-secundary" @click="voltar">Voltar</button>
+            </div>
           </form>
         </div>
       </div>
@@ -87,39 +90,32 @@
 </template>
 
 <script>
-import axios from "axios";
+
 import api from "../services/api";
 export default 
 {
   name: "InsertImg",
   data() {
     return {
-      users:[],
-      img: "",
-      baseURI: "http://localhost:8081/img",
-      baseUpload: "http://localhost:8081/upload",
+      users:{},
     };
   },
   mounted() {
     this.getUsers() ;
   },
   methods: {
-    handleFileUpload(id) 
-    {
-      
-    },
     getUsers() {
-      
-      var user = JSON.parse(sessionStorage.getItem("user"));
-      api.get("contas").then((Response) => {
-        Response.data.forEach((element) => {
-          if (element.conta_id == user.conta_id) {
-            this.users.push(element);
-            console.log(this.users);
-          }
-        });
+      this.users = JSON.parse(sessionStorage.getItem("user"));
+    },
+    upadte(){
+      api.put("contas/", this.users).then((Response) => {
+        //console.log(Response.data);
+        alert("Despesa alterada com sucesso");
       });
     },
+    voltar(){
+      this.$router.push("/expenses");
+    }
   }
 };
 </script>
@@ -159,5 +155,8 @@ img {
   border: 1px solid #eef0f3;
   border-radius: 0.25rem;
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+.btn.btn-secundary{
+    margin-top: 3px;
 }
 </style>

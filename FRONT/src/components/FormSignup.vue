@@ -29,6 +29,11 @@
           </label>
 
           <label class="label-input" for="">
+            <i class="fas fa-images icoon"></i>
+            <input type="file" id="file" ref="file" name="image" />
+          </label>
+
+          <label class="label-input" for="">
             <i class="fas fa-lock icoon"></i>
             <input
               type="password"
@@ -76,12 +81,13 @@ export default {
         usuario: "",
         senha: "",
       },
+      file: "",
     };
   },
   methods: {
     cadastrar() {
-      api.post("contas", this.signup).then((Response) => {
-        console.log(this.signup);
+      api.post("contas/", this.signup).then((Response) => {
+        this.handleFileUpload(Response.data.conta_id);
         alert("Usuario cadastrado com sucesso");
       });
     },
@@ -101,14 +107,36 @@ export default {
         this.cadastrar();
       }
     },
+    handleFileUpload(id) {
+      this.file = this.$refs.file.files[0];
+
+      let obj = {
+        resource: "conta",
+        id: id,
+      };
+      let json = JSON.stringify(obj);
+
+      let form = new FormData();
+      form.append("obj", json);
+      form.append("file", this.file);
+
+      api
+        .post("upload/", form, {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        })
+        .then((result) => {
+          console.log(result);
+        });
+    },
   },
 };
 </script>
 
 <style scoped>
-.container-fluid{
-  
-   display: flex;
+.container-fluid {
+  display: flex;
   justify-content: center;
   align-items: center;
   width: 100vw;

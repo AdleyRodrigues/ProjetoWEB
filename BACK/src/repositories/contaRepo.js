@@ -38,10 +38,10 @@ exports.findOne = async (conta_id) => {//pesquisar pelo conta_id
     return result.rows;
   };
 
-  exports.update = async (conta_id, conta) => {//atualizar
+  exports.update = async ( conta) => {//atualizar
     const result = await pool.query(
       "UPDATE conta SET nome=$1, usuario=$2, senha=$3 WHERE conta_id=$3 RETURNING *;",
-      [conta.nome, conta.usuario, conta.senha, conta_id]
+      [conta.nome, conta.usuario, conta.senha, conta.conta_id]
     );
     return result.rows[0];
   };

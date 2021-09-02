@@ -71,13 +71,6 @@ export default {
             sessionStorage.setItem("user", JSON.stringify(result.data));
           }
           this.$router.push("/expenses");
-
-          // if (Response.data.success) {
-          //   //console.log(Response);
-          //   window.location.href = "http://localhost:8080/expenses";
-          // } else {
-          //   alert("login ou senha incorretos!");
-          // }
         });
     },
     getCookie(name) {
@@ -94,6 +87,7 @@ export default {
         this.logar();
       }
     },
+       
   },
 };
 //console.log(baseURI);

@@ -20,11 +20,9 @@ exports.getByName = async (req, res) => {
 };
 
 exports.put = async (req, res) => {
+    console.log(req.body)
     res.json(
-        await contaService.update(
-            req.params.id,
-            new Conta(req.body.nome, req.body.usuario, req.body.senha)
-            )
+        await contaService.update(new Conta(req.body.conta_id, req.body.nome, req.body.usuario, req.body.senha))
     );
 };
 

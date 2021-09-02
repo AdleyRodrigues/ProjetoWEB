@@ -16,7 +16,11 @@ exports.getById = async (req, res) => {
 };
 
 exports.getByQtd = async (req, res) => {
-    res.json(await despesaService.getByQtd(req.params.qtd));
+    res.json(await despesaService.getByQtd(req.params.qtd, req.params.conta_id));
+};
+
+exports.getByName = async (req, res) => {
+    res.json(await despesaService.getByName(req.params.descricao, req.params.conta_id));
 };
 
 exports.put = async (req, res) => {

@@ -8,7 +8,7 @@ const cookieParser = require("cookie-parser");
 const sessions = require("express-session");
 require("dotenv/config");
 
-
+app.use(express.static("public"));
 
 app.use(cors({ credentials: true, origin: true }));
 app.use(express.json());
@@ -28,6 +28,7 @@ app.use(sessions({
 app.use(express.static("public"));
 
 //rotas
+const upload = require("./routes/upload-route");
 const index = require("./routes/index.js");
 const despesa = require("./routes/despesaRoute");
 const conta = require("./routes/contaRoute");
@@ -37,6 +38,7 @@ app.use("/", index);
 app.use("rotaDespesas", despesa);
 app.use("rotaContas", conta);
 app.use("/users", users);
+app.use("/upload",upload);
 app.use("/ok", (req, res, next) => {
     session = req.session;
 

@@ -19,8 +19,9 @@ class ContaService {
         return contaRepo.findByName(nome);
     }
 
-    update(id, conta) {
-        return contaRepo.update(id, conta);
+    update( conta) {
+        console.log(conta)
+        return contaRepo.update(conta);
     }
 
     delete(id) {

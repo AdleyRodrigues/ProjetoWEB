@@ -15,7 +15,7 @@
         v-model="buscaDescricao"
         placeholder="Pesquisa Nome"
       />
-      <button type="button" class="btn btn-warning">
+      <button type="button" class="btn btn-warning" @click="getDespesasDescricao">
         <i class="fas fa-search"></i>
       </button>
     </div>
@@ -220,6 +220,7 @@ export default {
       listaDespesas: [],
       buscaQuantidade: "",
       buscaDescricao: "",
+      idUser: "",
     };
   },
   methods: {
@@ -245,16 +246,17 @@ export default {
       });
     },
     getDespesasQtd() {
-      this.listaDespesas = [];
-      var user = JSON.parse(sessionStorage.getItem("user"));
-      api.get("despesas/qtd/" + this.buscaQuantidade).then((Response) => {
+      api.get(`despesas/qtd/${this.buscaQuantidade}/${this.idUser}`).then((Response) => {
         console.log(Response.data);
-        Response.data.forEach((element) => {
-          if (element.conta_id == user.conta_id) {
-            this.listaDespesas.push(element);
-            console.log(this.listaDespesas);
-          }
-        });
+        this.listaDespesas = Response.data
+        
+      });
+    },
+    getDespesasDescricao() {
+      api.get(`despesas/name/${this.buscaDescricao}/${this.idUser}`).then((Response) => {
+        console.log(Response.data);
+        this.listaDespesas = Response.data
+        
       });
     },
     deleteDespesas(id) {
@@ -295,8 +297,16 @@ export default {
         this.$router.push("/signin");
       });
     },
+    getIdUser(){
+      var user = JSON.parse(sessionStorage.getItem("user"));
+      api.get("contas").then((Response) => {
+        this.idUser = user.conta_id
+        //console.log(this.idUser);
+      })
+    },
   },
   mounted() {
+    this.getIdUser();
     this.getDespesas();
   },
 };

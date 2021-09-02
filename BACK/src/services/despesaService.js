@@ -14,12 +14,12 @@ class DespesaService {
         return despesaRepo.findOne(despesa_id);
     }
 
-    getByName(nome) {
-        return despesaRepo.findByName(nome);
+    getByName(descricao, conta_id) {
+        return despesaRepo.findByName(descricao, conta_id);
     }
 
-    getByQtd(qtd) {
-        return despesaRepo.findByQtd(qtd);
+    getByQtd(qtd, conta_id) {
+        return despesaRepo.findByQtd(qtd,conta_id);
     }
 
     update(despesa_id, despesa) {

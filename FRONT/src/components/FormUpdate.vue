@@ -82,7 +82,7 @@
           Limpar Campos
         </button>
 
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+        <button type="button" class="btn btn-secondary" @click="voltar">
           Cancelar
         </button>
         <button type="button" class="btn btn-primary" @click="validar">
@@ -144,6 +144,16 @@ export default {
       this.signup.pagamento = "";
       this.signup.despesa_data = "";
     },
+    voltar(){
+      this.$router.push("/expenses");
+    }
+  },
+  created() {
+    if (sessionStorage.getItem("user")) {
+      console.log("Ok")
+    }else{
+      this.$router.push("/signin");
+    }
   },
 };
 </script>
